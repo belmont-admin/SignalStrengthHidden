@@ -1,3 +1,8 @@
+radio.onReceivedValue(function (name, value) {
+    myNumber += 1
+    channelsText = convertToText(value)
+    basic.showNumber(myNumber)
+})
 radio.onReceivedString(function (receivedString) {
     basic.pause(200)
     radio.sendString("ping")
@@ -6,7 +11,7 @@ input.onButtonPressed(Button.AB, function () {
     myNumber += 1
     basic.showNumber(myNumber)
     if (myNumber == 1) {
-        radio.sendString(channelsText)
+        radio.sendValue("setup", parseFloat(channelsText))
         radio.setGroup(1)
     }
 })
