@@ -8,13 +8,15 @@ radio.onReceivedString(function (receivedString) {
     radio.sendString("ping")
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.setGroup(parseFloat(channelsText[myNumber]))
+    myChannel = parseFloat(channelsText[myNumber])
     myNumber += 1
     basic.showNumber(myNumber)
     nextChannel = parseFloat(channelsText[myNumber])
     if (myNumber == 1) {
         radio.sendValue("setup", parseFloat(channelsText))
         radio.setGroup(1)
+    } else {
+        radio.setGroup(myChannel)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -28,6 +30,7 @@ input.onButtonPressed(Button.A, function () {
     basic.showNumber(myNumber)
 })
 let nextChannel = 0
+let myChannel = 0
 let channels: number[] = []
 let channelsText = ""
 let myNumber = 0
