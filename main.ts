@@ -20,30 +20,32 @@ input.onButtonPressed(Button.AB, function () {
     }
 })
 input.onButtonPressed(Button.B, function () {
+    basic.showString(".")
     basic.showNumber(nextChannel)
     basic.pause(1000)
     basic.showNumber(myNumber)
 })
 input.onButtonPressed(Button.A, function () {
-    basic.showString(channelsText)
+    basic.showString("" + (text_list[myNumber - 1]))
     basic.pause(1000)
     basic.showNumber(myNumber)
 })
 let nextChannel = 0
 let myChannel = 0
+let text_list: string[] = []
 let channels: number[] = []
 let channelsText = ""
 let myNumber = 0
-let instance = 0
 basic.showString("H")
 myNumber = 0
 radio.setGroup(255)
 radio.setTransmitPower(7)
-let PossibleChannels = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let PossibleChannels = [2, 3, 4, 5, 6, 7, 8, 9]
 channelsText = ""
 for (let index = 0; index < 4; index++) {
     channels.push(PossibleChannels.removeAt(Math.randomRange(0, PossibleChannels.length - 1)))
 }
-for (let index2 = 0; index2 <= 3; index2++) {
-    channelsText = "" + channelsText + convertToText(channels[index2])
+for (let index1 = 0; index1 <= 3; index1++) {
+    channelsText = "" + channelsText + convertToText(channels[index1])
 }
+text_list = ["M", "I", "C", "R"]
