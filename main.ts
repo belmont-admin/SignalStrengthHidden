@@ -34,12 +34,11 @@ input.onButtonPressed(Button.B, function () {
         `)
     basic.showNumber(nextChannel)
     basic.pause(1000)
-    basic.showString("H")
 })
 input.onButtonPressed(Button.A, function () {
     basic.showString("" + (text_list[myNumber - 1]))
     basic.pause(1000)
-    basic.showNumber(myNumber)
+    basic.showString("H")
 })
 let nextChannel = 0
 let myChannel = 0
