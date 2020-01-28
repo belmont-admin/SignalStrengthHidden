@@ -9,21 +9,32 @@ radio.onReceivedString(function (receivedString) {
 })
 input.onButtonPressed(Button.AB, function () {
     myChannel = parseFloat(channelsText[myNumber])
-    myNumber += 1
-    basic.showNumber(myNumber)
-    nextChannel = parseFloat(channelsText[myNumber])
-    if (myNumber == 1) {
+    nextChannel = parseFloat(channelsText[myNumber + 1])
+    if (myNumber == 0) {
         radio.sendValue("setup", parseFloat(channelsText))
         radio.setGroup(1)
     } else {
         radio.setGroup(myChannel)
     }
+    myNumber += 1
+    if (myNumber > 4) {
+        myNumber = 1
+    }
+    basic.showNumber(myNumber)
+    basic.pause(1000)
+    basic.showString("H")
 })
 input.onButtonPressed(Button.B, function () {
-    basic.showString(".")
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
     basic.showNumber(nextChannel)
     basic.pause(1000)
-    basic.showNumber(myNumber)
+    basic.showString("H")
 })
 input.onButtonPressed(Button.A, function () {
     basic.showString("" + (text_list[myNumber - 1]))
